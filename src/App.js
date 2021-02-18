@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import HomeScreen from './screens/HomeScreen'
 import Header from './components/Header'
 import QuizScreen from './screens/QuizScreen'
+import ResultScreen from './screens/ResultScreen'
 import { Route } from 'react-router-dom'
 const App = () => {
   const [data, setData] = useState([])
@@ -15,8 +16,9 @@ const App = () => {
         }
       })
       const res = await getData.json()
-      let singleQuestions = res.filter((q) => q.multiple_correct_answers === 'false')
-      singleQuestions = singleQuestions.splice(0, 10);
+      let singleQuestions = await res.filter((q) => q.multiple_correct_answers === 'false')
+      singleQuestions = singleQuestions.splice(0, 5);
+      console.log("single", singleQuestions)
       setData(singleQuestions)
     }
     getData()
@@ -24,10 +26,11 @@ const App = () => {
   return (
     <>
       <Header />
-      <Route path="/" component={HomeScreen} exact />
+      {data.length > 0 ? <Route path="/" component={HomeScreen} exact /> : null}
       <Route path="/start" render={() => (
         <QuizScreen data={data} />
       )} />
+      <Route path="/result" component={ResultScreen} />
     </>
   )
 }

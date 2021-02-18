@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { Container, ProgressBar, Row } from 'react-bootstrap'
+import React from 'react'
+import { Container, ProgressBar } from 'react-bootstrap'
 import Options from '../components/Options'
-const Question = ({ question, qNum, givenAns, correct_answers, answers, progress, multiple_correct_answers }) => {
+const Question = ({ question, qNum, setGivenAns, correct_answers, answers, progress, multiple_correct_answers, checkAnswer }) => {
   const singleOrMultiple = multiple_correct_answers !== 'false' ? 'checkbox' : 'radio'
 
-  const correctAnswer = Object.keys(correct_answers).filter((ans) => correct_answers[ans] === 'true' ? ans : null)
-  //const correctAnswer2 = correctAnswer1[0].splice(0, 7)
-  const finalAnswer = answers[correctAnswer[0].split('').splice(0, 8).join('')]
+
   return (
     <>
       <Container className="border border-primary my-2 instruction">
@@ -17,9 +15,9 @@ const Question = ({ question, qNum, givenAns, correct_answers, answers, progress
               answer != null ?
                 <Options answer={answer}
                   question={question}
-                  givenAns={givenAns}
-                  correct_answer={finalAnswer}
+                  setGivenAns={setGivenAns}
                   singleOrMultiple={singleOrMultiple}
+                  checkAnswer={checkAnswer}
                   key={answer} /> : null
             ))
 

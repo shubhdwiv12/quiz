@@ -10,7 +10,7 @@ const Instructions = () => {
       </Row>
       <Row>
         <Col sm={12}>
-          <p>1. The following Quiz contains 10 Questions</p>
+          <p>1. The following Quiz contains 5 Questions</p>
         </Col>
       </Row>
       <Row>
@@ -25,7 +25,7 @@ const Instructions = () => {
       </Row>
       <Row>
         <Col sm={12}>
-          <p>3. Good Luck </p>
+          <p>4. Good Luck </p>
         </Col>
       </Row>
     </Container>

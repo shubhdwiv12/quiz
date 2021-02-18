@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Form } from 'react-bootstrap'
-const Options = ({ answer, givenAns, correct_answer, question, singleOrMultiple, qNum }) => {
-  const [givenAnswer, setGivenAnswer] = useState('')
+const Options = ({ answer, checkAnswer, question, singleOrMultiple, qNum }) => {
   return (
-    <Form.Check onClick={() => givenAns(answer)} type={singleOrMultiple} id={answer} name={question} label={answer} />
+    <Form.Check onClick={() => checkAnswer(answer)} type={singleOrMultiple} id={answer} name={question} label={answer} />
   )
 }
 
